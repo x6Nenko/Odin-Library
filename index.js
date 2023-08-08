@@ -15,9 +15,24 @@ function addBookToLibrary(input) {
 };
 
 function updateShelf() {
-    const bookElement = document.createElement('div');
-    shelf.appendChild(bookElement).classList.add("bookElement");
+    myLibrary.forEach(book => {
+        const bookElement = document.createElement("div");
+        shelf.appendChild(bookElement).classList.add("book-element");
+
+        bookElement.appendChild(document.createElement("p")).classList.add("book-title");
+        document.querySelector(".book-title").innerText = `${book.title}`;
+
+        bookElement.appendChild(document.createElement("p")).classList.add("book-author");
+        document.querySelector(".book-author").innerText = `${book.author}`;
+
+        bookElement.appendChild(document.createElement("p")).classList.add("book-pages");
+        document.querySelector(".book-pages").innerText = `${book.pages}`;
+
+        bookElement.appendChild(document.createElement("p")).classList.add("book-read");
+        document.querySelector(".book-read").innerText = `${book.read}`;
+    });
 };
 
 addBookToLibrary();
+updateShelf();
 console.log(myLibrary);
