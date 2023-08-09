@@ -1,6 +1,7 @@
 const shelf = document.querySelector("main");
 const addBookBtn = document.getElementById("addBookBtn");
 const addBookForm = document.getElementById("addBookForm");
+const deleteBookBtn = document.querySelectorAll(".deleteBtn");
 const coverInput = document.getElementById("cover");
 const titleInput = document.getElementById("title");
 const authorInput = document.getElementById("author");
@@ -24,6 +25,7 @@ function addBookToLibrary(cover, title, author, pages, read) {
     let addNewBook = new Book(cover, title, author, pages, read);
     myLibrary.unshift(addNewBook);
     updateShelf();
+    listenToDeleteBtn();
 };
 
 function updateShelf() {
@@ -35,7 +37,7 @@ function updateShelf() {
     myLibrary.forEach((book, index) => {
         const bookElement = document.createElement("div");
         shelf.appendChild(bookElement).classList.add("book-element");
-        bookElement.setAttribute("data-id", `Book${index}`)
+        bookElement.setAttribute("data-id", `${index}`)
 
         bookElement.appendChild(document.createElement("img")).classList.add("book-cover");
         const cover = document.querySelectorAll(".book-cover");
@@ -58,6 +60,9 @@ function updateShelf() {
         const read = document.querySelectorAll(".book-read");
         read[read.length - 1].innerText = `${book.read}`;
 
+        bookElement.appendChild(document.createElement("button")).classList.add("deleteBtn");
+        const deleteBtn = document.querySelectorAll(".deleteBtn");
+        deleteBtn[deleteBtn.length - 1].innerText = `Delete book`;
 
         // bookElement.appendChild(document.createElement("p")).innerText = `${book.title}`;
 
@@ -86,5 +91,19 @@ addBookBtn.addEventListener("click", function() {
     inputsWrapperElement.classList.toggle("active");
 });
 
+function listenToDeleteBtn() {
+    const deleteBookBtn = document.querySelectorAll(".deleteBtn");
+    deleteBookBtn.forEach(book => {
+        book.addEventListener("click", function(e) {
+            const triggeredBook = e.target.parentElement;
+            const bookIndex = triggeredBook.getAttribute("data-id");
+            deleteBook(bookIndex);
+        });
+    });
+};
 
-console.log(myLibrary);
+function deleteBook(index) {
+    myLibrary.splice(index, 1);
+    updateShelf();
+    listenToDeleteBtn();
+};
