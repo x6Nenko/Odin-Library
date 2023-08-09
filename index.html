@@ -32,22 +32,14 @@
                 <input type="text" name="pages" id="pages">
             </div>
 
-            <fieldset>
-                <div class="input-container">
-                    <input type="radio" name="state" id="want" value="Want to read" checked>
-                    <label for="want">Want to read</label>
-                </div>
-
-                <div class="input-container">
-                    <input type="radio" name="state" id="reading" value="Currently reading">
-                    <label for="reading">Currently reading</label>
-                </div>
-
-                <div class="input-container">
-                    <input type="radio" name="state" id="read" value="Read">
-                    <label for="read">Read</label>
-                </div>
-            </fieldset>
+            <div class="input-container">
+                <label for="stateSelect" aria-label="Have you read it already? Choose the answer."></label>
+                <select name="state" id="stateSelect">
+                    <option value="Want to read">Want to read</option>
+                    <option value="Currently reading">Currently reading</option>
+                    <option value="Read">Read</option>
+                  </select>
+            </div>
 
             <button>Submit</button>
         </form>

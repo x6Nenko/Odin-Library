@@ -6,6 +6,7 @@ const coverInput = document.getElementById("cover");
 const titleInput = document.getElementById("title");
 const authorInput = document.getElementById("author");
 const numOfPagesinput = document.getElementById("pages");
+const stateSelectInput = document.getElementById("stateSelect");
 const wantToReadInput = document.getElementById("want");
 const currentlyReadingInput = document.getElementById("reading");
 const readInput = document.getElementById("read");
@@ -63,14 +64,6 @@ function updateShelf() {
         bookElement.appendChild(document.createElement("button")).classList.add("deleteBtn");
         const deleteBtn = document.querySelectorAll(".deleteBtn");
         deleteBtn[deleteBtn.length - 1].innerText = `Delete book`;
-
-        // bookElement.appendChild(document.createElement("p")).innerText = `${book.title}`;
-
-        // bookElement.appendChild(document.createElement("p")).innerText = `${book.author}`;
-
-        // bookElement.appendChild(document.createElement("p")).innerText = `${book.pages}`;
-
-        // bookElement.appendChild(document.createElement("p")).innerText = `${book.read}`;
     });
 };
 
@@ -82,8 +75,10 @@ addBookForm.addEventListener("submit", function(e) {
     wantToReadInput.checked ? chosenReadState = "Want to read" : null;
     currentlyReadingInput.checked ? chosenReadState = "Currently reading" : null;
     readInput.checked ? chosenReadState = "Read" : null;
+
+    console.log(stateSelectInput.value);
     
-    addBookToLibrary(coverInput.value, titleInput.value, authorInput.value, numOfPagesinput.value, chosenReadState);
+    addBookToLibrary(coverInput.value, titleInput.value, authorInput.value, numOfPagesinput.value, stateSelectInput.value);
 });
 
 addBookBtn.addEventListener("click", function() {
