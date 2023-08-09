@@ -8,6 +8,44 @@
 </head>
 <body>
     <h1>My library</h1>
+    <div class="inputs-wrapper">
+        <!-- javascript:void(0); -->
+        <form id="addBookForm" action="">
+            <div class="input-container">
+                <label for="title">Title</label>
+                <input type="text" name="title" id="title">
+            </div>
+
+            <div class="input-container">
+                <label for="author">Author</label>
+                <input type="text" name="author" id="author">
+            </div>
+
+            <div class="input-container">
+                <label for="pages">Pages</label>
+                <input type="text" name="pages" id="pages">
+            </div>
+
+            <fieldset>
+                <div class="input-container">
+                    <input type="radio" name="state" id="want" value="Want to read" checked>
+                    <label for="want">Want to read</label>
+                </div>
+
+                <div class="input-container">
+                    <input type="radio" name="state" id="reading" value="Currently reading">
+                    <label for="reading">Currently reading</label>
+                </div>
+
+                <div class="input-container">
+                    <input type="radio" name="state" id="read" value="Read">
+                    <label for="read">Read</label>
+                </div>
+            </fieldset>
+
+            <button>Submit</button>
+        </form>
+    </div>
 
     <main>
         
