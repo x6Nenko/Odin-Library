@@ -32,9 +32,10 @@ function updateShelf() {
         book.remove();
     });
 
-    myLibrary.forEach(book => {
+    myLibrary.forEach((book, index) => {
         const bookElement = document.createElement("div");
         shelf.appendChild(bookElement).classList.add("book-element");
+        bookElement.setAttribute("data-id", `Book${index}`)
 
         bookElement.appendChild(document.createElement("img")).classList.add("book-cover");
         const cover = document.querySelectorAll(".book-cover");

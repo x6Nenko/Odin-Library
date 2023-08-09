@@ -7,8 +7,6 @@ body {
 }
 
 .book-element img {
-    position: absolute;
-
     display: inline-block;
     width: 75px;
     height: 100px;
