@@ -1,0 +1,18 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+
+}
+
+.book-element img {
+    width: 75px;
+    height: 100px;
+}
+
+.fallback-image {
+    width: 75px;
+    height: 100px;
+    background-color: brown;
+}

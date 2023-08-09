@@ -1,5 +1,6 @@
 const shelf = document.querySelector("main");
 const addBookForm = document.getElementById("addBookForm");
+const coverInput = document.getElementById("cover");
 const titleInput = document.getElementById("title");
 const authorInput = document.getElementById("author");
 const numOfPagesinput = document.getElementById("pages");
@@ -9,16 +10,17 @@ const readInput = document.getElementById("read");
 
 let myLibrary = [];
 
-function Book(title, author, pages, read) {
+function Book(cover, title, author, pages, read) {
+    this.cover = cover
     this.title = title
     this.author = author
     this.pages = pages
     this.read = read
 };
 
-function addBookToLibrary(title, author, pages, read) {
+function addBookToLibrary(cover, title, author, pages, read) {
     const theHobbit = new Book('The Hobbit', 'by J.R.R. Tolkien', '295 pages', 'not read yet');
-    let addNewBook = new Book(title, author, pages, read);
+    let addNewBook = new Book(cover, title, author, pages, read);
     myLibrary.push(addNewBook);
     updateShelf();
 };
@@ -32,7 +34,11 @@ function updateShelf() {
     myLibrary.forEach(book => {
         const bookElement = document.createElement("div");
         shelf.appendChild(bookElement).classList.add("book-element");
-        console.log(book);
+
+        bookElement.appendChild(document.createElement("img")).classList.add("book-cover");
+        const cover = document.querySelectorAll(".book-cover");
+        cover[cover.length - 1].src = `${book.cover}`;
+        cover[cover.length - 1].alt = `Book cover`;
 
         bookElement.appendChild(document.createElement("p")).classList.add("book-title");
         const title = document.querySelectorAll(".book-title");
@@ -69,8 +75,8 @@ addBookForm.addEventListener("submit", function(e) {
     wantToReadInput.checked ? chosenReadState = "Want to read" : null;
     currentlyReadingInput.checked ? chosenReadState = "Currently reading" : null;
     readInput.checked ? chosenReadState = "Read" : null;
-
-    addBookToLibrary(titleInput.value, authorInput.value, numOfPagesinput.value, chosenReadState);
+    
+    addBookToLibrary(coverInput.value, titleInput.value, authorInput.value, numOfPagesinput.value, chosenReadState);
 });
 
 
