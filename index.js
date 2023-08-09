@@ -1,4 +1,5 @@
 const shelf = document.querySelector("main");
+const addBookBtn = document.getElementById("addBookBtn");
 const addBookForm = document.getElementById("addBookForm");
 const coverInput = document.getElementById("cover");
 const titleInput = document.getElementById("title");
@@ -21,7 +22,7 @@ function Book(cover, title, author, pages, read) {
 function addBookToLibrary(cover, title, author, pages, read) {
     const theHobbit = new Book('The Hobbit', 'by J.R.R. Tolkien', '295 pages', 'not read yet');
     let addNewBook = new Book(cover, title, author, pages, read);
-    myLibrary.push(addNewBook);
+    myLibrary.unshift(addNewBook);
     updateShelf();
 };
 
@@ -77,6 +78,11 @@ addBookForm.addEventListener("submit", function(e) {
     readInput.checked ? chosenReadState = "Read" : null;
     
     addBookToLibrary(coverInput.value, titleInput.value, authorInput.value, numOfPagesinput.value, chosenReadState);
+});
+
+addBookBtn.addEventListener("click", function() {
+    const inputsWrapperElement = document.querySelector(".inputs-wrapper");
+    inputsWrapperElement.classList.toggle("active");
 });
 
 
