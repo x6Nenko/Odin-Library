@@ -8,6 +8,10 @@ body, select {
     font-family: 'Lora', serif;
 }
 
+select {
+    color: #000;
+}
+
 body {
     background-color: #f5f5f5;
 }
