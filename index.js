@@ -38,7 +38,7 @@ function updateShelf() {
     });
 
     myLibrary.forEach((book, index) => {
-        const bookElement = document.createElement("div");
+        const bookElement = document.createElement("article");
         shelf.appendChild(bookElement).classList.add("book-element");
         bookElement.setAttribute("data-id", `${index}`)
 
