@@ -85,7 +85,7 @@ function updateShelf() {
 
         bookElement.appendChild(document.createElement("button")).classList.add("deleteBtn");
         const deleteBtn = document.querySelectorAll(".deleteBtn");
-        deleteBtn[deleteBtn.length - 1].innerText = `Delete book`;
+        deleteBtn[deleteBtn.length - 1].innerText = `X`;
     });
 };
 
@@ -94,7 +94,7 @@ function refreshFormInputs() {
     titleInput.value = "";
     authorInput.value = "";
     numOfPagesinput.value = "";
-    stateSelectInput.value  = "";
+    stateSelectInput.value  = "Want to read";
 };
 
 addBookForm.addEventListener("submit", function(e) {
@@ -102,6 +102,15 @@ addBookForm.addEventListener("submit", function(e) {
     addBookToLibrary(coverInput.value, titleInput.value, authorInput.value, numOfPagesinput.value, stateSelectInput.value);
     refreshFormInputs();
 });
+
+function addInitialBooks() {
+    addBookToLibrary("https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1447957962i/25744928.jpg", "Deep Work: Rules for Focused Success in a Distracted World", "Cal Newport", "296", "Read");
+    addBookToLibrary("https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1421618636i/30659.jpg", "Meditations", "Marcus Aurelius", "254", "Read");
+    addBookToLibrary("https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1558216416i/36236124.jpg", "Fight Club", "Chuck Palahniuk", "224", "Read");
+    addBookToLibrary("https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1531891848i/11.jpg", "The Hitchhiker's Guide to the Galaxy", "Douglas Adams", "216", "Read");
+};
+
+addInitialBooks();
 
 function toggleFormDisplaying() {
     const inputsWrapperElement = document.querySelector(".inputs-wrapper");
