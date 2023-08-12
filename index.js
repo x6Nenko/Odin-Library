@@ -56,11 +56,11 @@ function updateShelf() {
 
         bookInfo.appendChild(document.createElement("p")).classList.add("book-author");
         const author = document.querySelectorAll(".book-author");
-        author[author.length - 1].innerText = `by ${book.author}`;
+        book.author.length > 0 ? author[author.length - 1].innerText = `by ${book.author}` : author[author.length - 1].innerText = `${book.author}`
 
         bookInfo.appendChild(document.createElement("p")).classList.add("book-pages");
         const pages = document.querySelectorAll(".book-pages");
-        pages[pages.length - 1].innerText = `${book.pages} pages`;
+        book.pages.length > 0 ? pages[pages.length - 1].innerText = `${book.pages} pages` : pages[pages.length - 1].innerText = `${book.pages}`;
 
         bookInfo.appendChild(document.createElement("select")).id = `switchState${index}`;
         const latestSelect = document.querySelectorAll("select");
