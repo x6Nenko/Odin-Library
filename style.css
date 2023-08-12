@@ -1,9 +1,95 @@
 * {
     box-sizing: border-box;
+    padding: 0;
+    margin: 0;
 }
 
-body {
+body, select {
+    font-family: 'Lora', serif;
+}
 
+/* ================= Header ================= */
+
+header {
+    display: grid;
+    place-content: center;
+    background-color: #F8F2E1;
+    background: linear-gradient(90deg, rgba(248, 242, 225, 0.00) 0%, #F8F2E1 50%, rgba(248, 242, 225, 0.00) 100%);
+    padding: 20px;
+}
+
+header h1 {
+    
+}
+
+header span {
+    display: grid;
+    place-content: center;
+    font-style: italic;
+    color: #fff;
+    background-color: #6B1823;
+    border-radius: 100vh;
+    height: 30px;
+}
+
+.top-logo {
+    
+}
+
+.top-logo span {
+    padding: 0 30px;
+    background: linear-gradient(225deg, #6B1823 0%, #18236B 100%);
+
+}
+
+.bottom-logo span {
+    padding: 0 15px;
+    background: linear-gradient(225deg, #18236B 0%, #6B1823 100%);
+}
+
+.bottom-logo {
+    margin-right: 10px;
+}
+
+.logo-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.logo-container div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+/* ================= Body ================= */
+
+.btn-container {
+    display: grid;
+    place-content: center;
+    margin-top: 40px;
+}
+
+button {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 40px;
+    background-color: #fff;
+    border: 2px solid #7F7F7F;
+    font-family: 'Lora', serif;
+    border-radius: 100vh;
+}
+
+#addBookBtn {
+    border: 2px solid #7F7F7F;
+    font-size: 2rem;
+    transition: all .2s ease-in-out;
+}
+
+#addBookBtn:hover {
+    background-color: #e5e5e5;
 }
 
 .book-element img {
@@ -17,10 +103,87 @@ body {
     font-size: 12px;
 }
 
+/* ================= Form ================= */
+
+/* .overlay {
+    position: fixed;
+    display: none;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 2;
+    cursor: pointer;
+}
+
+.active {
+    display: block;
+} */
+
+.overlay {
+    position: fixed;
+    display: none;
+    width: 100%;
+    height: 100%;
+    inset: 0;
+    background-color: rgba(0,0,0,0.5);
+}
+
 .inputs-wrapper {
+    position: absolute;
     visibility: hidden;
+    background-color: #fff;
+    border: 5px solid #7F7F7F;
+    border-radius: 50px;
+    padding: 40px 20px;
+
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .active {
     visibility: visible;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    font-size: 16px;
+    width: 300px;
+}
+
+label {
+    margin-left: 25px;
+    margin-bottom: 5px;
+}
+
+.input-container {
+    display: flex;
+    flex-direction: column;
+}
+
+input, select {
+    font-size: 24px;
+    border: 2px solid #7F7F7F;
+    border-radius: 100vh;
+    padding: 10px 20px;
+}
+
+.submit-btn {
+    display: grid;
+    place-content: center;
+    border-color: #5F7F62;
+    font-size: 24px;
+    font-weight: 700;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.submit-btn:hover {
+    background-color: #dfe5df;
 }

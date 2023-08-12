@@ -1,6 +1,7 @@
 const shelf = document.querySelector("main");
 const addBookBtn = document.getElementById("addBookBtn");
 const addBookForm = document.getElementById("addBookForm");
+const submitBtn = document.querySelector(".submit-btn");
 const deleteBookBtn = document.querySelectorAll(".deleteBtn");
 const coverInput = document.getElementById("cover");
 const titleInput = document.getElementById("title");
@@ -10,6 +11,7 @@ const stateSelectInput = document.getElementById("stateSelect");
 const wantToReadInput = document.getElementById("want");
 const currentlyReadingInput = document.getElementById("reading");
 const readInput = document.getElementById("read");
+const overlayBg = document.querySelector(".overlay");
 
 let myLibrary = [];
 
@@ -93,16 +95,38 @@ function updateShelf() {
     });
 };
 
+function refreshFormInputs() {
+    coverInput.value = "";
+    titleInput.value = "";
+    authorInput.value = "";
+    numOfPagesinput.value = "";
+    stateSelectInput.value  = "";
+};
+
 addBookForm.addEventListener("submit", function(e) {
     e.preventDefault();
-    let chosenReadState = "";
-    
     addBookToLibrary(coverInput.value, titleInput.value, authorInput.value, numOfPagesinput.value, stateSelectInput.value);
+    refreshFormInputs();
 });
 
-addBookBtn.addEventListener("click", function() {
+function toggleFormDisplaying() {
     const inputsWrapperElement = document.querySelector(".inputs-wrapper");
     inputsWrapperElement.classList.toggle("active");
+};
+
+addBookBtn.addEventListener("click", function() {
+    toggleFormDisplaying();
+    overlayBg.style.display = "block"
+});
+
+submitBtn.addEventListener("click", function() {
+    toggleFormDisplaying();
+    overlayBg.style.display = "none"
+});
+
+overlayBg.addEventListener("click", function() {
+    toggleFormDisplaying();
+    overlayBg.style.display = "none"
 });
 
 function listenToDeleteBtn() {
