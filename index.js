@@ -47,30 +47,22 @@ function updateShelf() {
         cover[cover.length - 1].src = `${book.cover}`;
         cover[cover.length - 1].alt = `Book cover`;
 
-        bookElement.appendChild(document.createElement("p")).classList.add("book-title");
+        const bookInfo = document.createElement("div");
+        bookElement.appendChild(bookInfo).classList.add("book-info");
+
+        bookInfo.appendChild(document.createElement("p")).classList.add("book-title");
         const title = document.querySelectorAll(".book-title");
         title[title.length - 1].innerText = `${book.title}`
 
-        bookElement.appendChild(document.createElement("p")).classList.add("book-author");
+        bookInfo.appendChild(document.createElement("p")).classList.add("book-author");
         const author = document.querySelectorAll(".book-author");
-        author[author.length - 1].innerText = `${book.author}`;
+        author[author.length - 1].innerText = `by ${book.author}`;
 
-        bookElement.appendChild(document.createElement("p")).classList.add("book-pages");
+        bookInfo.appendChild(document.createElement("p")).classList.add("book-pages");
         const pages = document.querySelectorAll(".book-pages");
-        pages[pages.length - 1].innerText = `${book.pages}`;
+        pages[pages.length - 1].innerText = `${book.pages} pages`;
 
-        bookElement.appendChild(document.createElement("p")).classList.add("book-read");
-        const read = document.querySelectorAll(".book-read");
-        read[read.length - 1].innerText = `${book.read}`;
-
-        bookElement.appendChild(document.createElement("button")).classList.add("deleteBtn");
-        const deleteBtn = document.querySelectorAll(".deleteBtn");
-        deleteBtn[deleteBtn.length - 1].innerText = `Delete book`;
-
-        bookElement.appendChild(document.createElement("div")).classList.add("input-container");
-        const inputContainer = document.querySelectorAll(".input-container");
-        inputContainer[inputContainer.length - 1].appendChild(document.createElement("label")).htmlFor = `switchState${index}`;
-        inputContainer[inputContainer.length - 1].appendChild(document.createElement("select")).id = `switchState${index}`;
+        bookInfo.appendChild(document.createElement("select")).id = `switchState${index}`;
         const latestSelect = document.querySelectorAll("select");
         const selectOption1 = document.createElement("option");
         selectOption1.value = "Want to read";
@@ -88,10 +80,12 @@ function updateShelf() {
         latestSelect[latestSelect.length -1].appendChild(selectOption2);
         latestSelect[latestSelect.length -1].appendChild(selectOption3);
         latestSelect[latestSelect.length -1].addEventListener("click", function(e) {
-            console.log(myLibrary[index]);
             myLibrary[index].read = e.target.value;
-            console.log(myLibrary[index]);
         });
+
+        bookElement.appendChild(document.createElement("button")).classList.add("deleteBtn");
+        const deleteBtn = document.querySelectorAll(".deleteBtn");
+        deleteBtn[deleteBtn.length - 1].innerText = `Delete book`;
     });
 };
 
